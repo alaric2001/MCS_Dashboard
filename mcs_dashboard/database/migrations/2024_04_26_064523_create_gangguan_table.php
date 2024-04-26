@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('gangguan', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->enum('role', ['telkomsat', 'tni', 'noc'])->default('tni')->nullable();
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+
+            $table->unsignedBigInteger('id_data_mcs');
+            $table->foreign('id_data_mcs')->references('id')->on('data_mcs')->onDelete('cascade');
+            
+            $table->integer('no_mcs');
+            $table->string('pic');
+            $table->integer('no_hp_pic');
+            $table->string('ket');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('gangguan');
     }
 };

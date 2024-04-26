@@ -11,14 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('data_mcs', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->enum('role', ['telkomsat', 'tni', 'noc'])->default('tni')->nullable();
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->integer('no_mcs');
+            $table->string('nama');
+            $table->string('satuan');
+            $table->string('kategori');
+            $table->date('tgl_aktif');
+            $table->string('paket_data');
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('data_mcs');
     }
 };
