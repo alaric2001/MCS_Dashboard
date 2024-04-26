@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('gangguan', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('id_data_mcs');
-            $table->foreign('id_data_mcs')->references('id')->on('data_mcs')->onDelete('cascade');
+            $table->unsignedBigInteger('data_mcs_id');
+            $table->foreign('data_mcs_id')->references('id')->on('data_mcs')->onDelete('cascade');
             
-            $table->integer('no_mcs');
+            $table->bigInteger('no_mcs')->nullable();
             $table->string('pic');
-            $table->integer('no_hp_pic');
+            $table->bigInteger('no_hp_pic');
             $table->string('ket');
             $table->timestamps();
         });

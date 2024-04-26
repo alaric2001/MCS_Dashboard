@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('data_mcs', function (Blueprint $table) {
             $table->id();
-            $table->integer('no_mcs');
+            $table->bigInteger('no_mcs');
             $table->string('nama');
             $table->string('satuan');
             $table->string('kategori');
