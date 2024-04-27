@@ -1,0 +1,30 @@
+table{
+    border-collapse: collapse; /* Pastikan border-collapse diaktifkan */
+    border-radius: 10px 10px 0px 0px; /* Mengatur radius sudut border */
+    overflow: hidden;
+    
+}
+
+th{
+    padding: 12px;
+    border: 1px solid #8A7F56;
+    /* border: 1px solid #b4b7bd; */
+}
+
+td{
+    padding: 12px;
+    /* border: 1px solid #b4b7bd;
+    font-size: 12px; */
+}
+
+tr {
+    /* padding: 12px; */
+    border-left: 1px solid #b4b7bd;
+    border-right: 1px solid #b4b7bd;
+    border-bottom: 1px solid #b4b7bd;
+    font-size: 14px;
+}
+
+/* tr:not(:last-child) {
+    border-bottom: 1px solid #b4b7bd;
+} */

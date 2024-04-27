@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MCSController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,8 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('tni.home');
 });
+
+Route::get('/mcs-data', [MCSController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
