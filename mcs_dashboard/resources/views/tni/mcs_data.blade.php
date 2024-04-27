@@ -1,6 +1,6 @@
 @extends('layouts.tni')
 
-@section('judul','Data MCS')
+@section('judul','Data')
 
 @section('content')
     <div class="mx-[42px]">
