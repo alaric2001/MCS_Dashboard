@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/x-icon" href="{{ asset('images/Lambang_TNI_AD.png') }}">
     <link rel="stylesheet" href="{{ asset('css/tni.css') }}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     @vite('resources/css/app.css')
     <title>@yield('judul') | MCS</title>
 </head>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MCSController;
+use App\Http\Controllers\GangguanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,7 @@ Route::get('/home', function () {
 });
 
 Route::get('/mcs-data', [MCSController::class, 'index']);
+Route::get('/gangguan', [GangguanController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
