@@ -7,9 +7,9 @@
         <div class="my-[30px] flex justify-between">
             <p class=" font-[600] text-xl">Laporan Gangguan Layanan</p>
             <div class="flex gap-4">
-                <button class="flex justify-between items-center  px-4 py-3 border border-[#A6A6A6] text-black bg-white h-[44px] w-[112px] rounded-xl hover:bg-gray-200">
-                    <i class="material-icons">filter_list</i>
-                    <p>Filter</p>
+                <button class="flex justify-between items-center  px-4 py-3 border border-[#A6A6A6] text-black bg-white h-[44px] w-[162px] rounded-xl hover:bg-gray-200">
+                    <i class="material-icons">file_upload</i>
+                    <p>Import Data</p>
                 </button>
                 <button id="openModalButton" class="flex justify-between items-center  px-4 py-3 border border-[#394C29] text-white bg-[#394C29] h-[44px] rounded-xl hover:bg-[#4c6637]">
                     + Buat Laporan
@@ -83,11 +83,6 @@
                         
                     </div>
                 </form>
-                {{-- <button id="closeModalButton" class="absolute top-0 right-0 m-4 text-gray-700 hover:text-gray-900">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button> --}}
             </div>
         </div>
     </div>
@@ -112,19 +107,10 @@
         //     modal.classList.add('hidden');
         // });
 
-        
-        // Event listener untuk mencegah event klik overlay propagating ke modal
-        // modal.addEventListener('click', function(event) {
-        //     event.stopPropagation();
-        // });
-
         window.onclick = function(event) {
             if (event.target == myModal) {
                 document.getElementById('myModal').classList.add('hidden');
             }
-        //     document.getElementById('closeModalButton').addEventListener('click', function() {
-        //     document.getElementById('myModal').classList.add('hidden');
-        // });
         }
     </script>
 @endsection
