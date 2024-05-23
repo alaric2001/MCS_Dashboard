@@ -48,7 +48,7 @@
     </div>
 
     <!-- Modal -->
-    <div id="myModal" class="modal hidden fixed top-0 left-0 w-full h-full flex items-center justify-center">
+    <div id="myModal" class="hidden ">
         {{-- <div id="modalOverlay" class="modal-overlay fixed top-0 left-0 w-full h-full bg-black opacity-50"></div>
         <div id="modalOverlay" class="modal-container fixed top-0 left-0 z-50 w-full h-full flex items-center justify-center"> --}}
             <div class="modal-content w-[440px] bg-white p-8 rounded-lg shadow-md m-auto h-auto">
@@ -105,6 +105,7 @@
         // Open modal when button clicked
         document.getElementById('openModalButton').addEventListener('click', function() {
             document.getElementById('myModal').classList.remove('hidden');
+            document.getElementById('myModal').classList.add('modal', 'fixed', 'top-0', 'left-0', 'w-full', 'h-full', 'flex', 'items-center', 'justify-center');
         });
 
         // Close modal when close button clicked
