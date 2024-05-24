@@ -60,8 +60,14 @@
                 <form action="/inputlaporan" method="POST">
                     @csrf
                     <div class="mb-4">
-                        <label for="data_mcs_id" class="block text-sm font-medium text-gray-700">Data MCS ID</label>
-                        <input type="text" name="data_mcs_id" id="data_mcs_id" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        <label for="data_mcs_id" class="block text-sm font-medium text-gray-700">Nomor MCS</label>
+                        {{-- <input type="text" name="data_mcs_id" id="data_mcs_id" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"> --}}
+                        <select class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" name="data_mcs_id" id="data_mcs_id" required>
+                            <option value="" disabled selected hidden>Pilih Nomor MCS</option>
+                            @foreach ($datamcs as $data)
+                                <option value="{{ $data->id }}">{{ $data->nama }} - {{ $data->no_mcs }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="mb-4">
                         <label for="pic" class="block text-sm font-medium text-gray-700">PIC</label>
@@ -69,7 +75,7 @@
                     </div>
                     <div class="mb-4">
                         <label for="no_hp_pic" class="block text-sm font-medium text-gray-700">Nomor HP PIC</label>
-                        <input type="text" name="no_hp_pic" id="no_hp_pic" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        <input type="number" name="no_hp_pic" id="no_hp_pic" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                     </div>
                     <div class="mb-4">
                         <label for="ket" class="block text-sm font-medium text-gray-700">Keterangan</label>

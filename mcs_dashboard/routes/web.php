@@ -20,12 +20,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('tni.home');
-});
+// Route::get('/home', function () {
+//     return view('tni.home');
+// });
+
+Route::get('/home', [MCSController::class, 'home']);
 
 Route::get('/mcs-data', [MCSController::class, 'index']);
+
+Route::post('/inputlaporan', [GangguanController::class, 'add']);
 Route::get('/gangguan', [GangguanController::class, 'index']);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

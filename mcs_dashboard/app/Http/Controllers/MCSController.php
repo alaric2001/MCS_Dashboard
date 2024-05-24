@@ -7,6 +7,13 @@ use App\Models\MCS;
 
 class MCSController extends Controller
 {
+    public function home()
+    {
+        $datamcs = MCS::all();
+        // return view('layouts.nav_user', ['cartCount' => $cartCount]);
+        return view('tni.home', compact('datamcs'));
+    }
+
     public function index()
     {
         $datamcs = MCS::all();
