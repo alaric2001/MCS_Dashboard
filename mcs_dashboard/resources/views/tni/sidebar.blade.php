@@ -3,7 +3,7 @@
         <img class="" src="{{ asset('images/LOGO sidebar.png') }}" alt="logo tni sidebar">
     </div>
     <div class="flex flex-col m-4 gap-1">
-        <a class="p-2 text-[#747474] text-sm rounded-md hover:bg-white @if(Request::is('home')) bg-white font-bold @else font-medium @endif" href="/home">Beranda</a>
+        <a class="p-2 text-[#747474] text-sm rounded-md hover:bg-white @if(Request::is('home')) bg-white font-bold @else font-medium @endif" href="/">Beranda</a>
         <a class="p-2 text-[#747474] text-sm rounded-md hover:bg-white @if(Request::is('mcs-data')) bg-white font-bold @else font-medium @endif" href="/mcs-data">Liat Data MCS</a>
         <a class="p-2 text-[#747474] text-sm rounded-md hover:bg-white @if(Request::is('gangguan')) bg-white font-bold @else font-medium @endif" href="/gangguan">Laporan Gangguan Layanan</a>
     </div>

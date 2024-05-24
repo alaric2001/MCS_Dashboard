@@ -13,8 +13,13 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('images/Lambang_TNI_AD.png') }}">
+        <link rel="stylesheet" href="{{ asset('css/tni.css') }}">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        @vite('resources/css/app.css')
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased bg-[#ECE7E1]">
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
 

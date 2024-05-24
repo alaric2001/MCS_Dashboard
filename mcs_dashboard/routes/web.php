@@ -16,20 +16,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // Route::get('/home', function () {
 //     return view('tni.home');
 // });
 
-Route::get('/home', [MCSController::class, 'home']);
+Route::get('/', [MCSController::class, 'home']);
 
 Route::get('/mcs-data', [MCSController::class, 'index']);
 
 Route::post('/inputlaporan', [GangguanController::class, 'add']);
 Route::get('/gangguan', [GangguanController::class, 'index']);
+
+Route::middleware(['auth','user'])->group(function () {
+
+});
 
 
 Route::get('/dashboard', function () {
