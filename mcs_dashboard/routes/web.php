@@ -26,13 +26,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MCSController::class, 'home']);
 
-Route::get('/mcs-data', [MCSController::class, 'index']);
 
-Route::post('/inputlaporan', [GangguanController::class, 'add']);
-Route::get('/gangguan', [GangguanController::class, 'index']);
 
 Route::middleware(['auth','user'])->group(function () {
+    Route::get('/mcs-data', [MCSController::class, 'index']);
 
+    Route::post('/inputlaporan', [GangguanController::class, 'add']);
+    Route::get('/gangguan', [GangguanController::class, 'index']);
 });
 
 
