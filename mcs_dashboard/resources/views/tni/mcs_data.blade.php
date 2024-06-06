@@ -59,35 +59,49 @@
                     </button>
                 </div>
                 
-                <form action="/inputlaporan" method="POST">
+                <form action="/mcs-data" method="GET">
                     @csrf
                     <div class="mb-4">
                         <label for="data_mcs_id" class="block text-sm font-medium text-gray-700">Nomor Mcs</label>
-                        <input type="number" name="nomor mcs" id="data_mcs_id" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        <input value="{{ request()->get('nomor_mcs') }}" type="number" name="nomor mcs" id="data_mcs_id" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                     </div>
                     <div class="mb-4">
-                        <label for="pic" class="block text-sm font-medium text-gray-700">Name</label>
-                        <input type="text" name="name" id="pic" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        <label for="pic" class="block text-sm font-medium text-gray-700">Nama/Jenis/ID Pangkat</label>
+                        <input value="{{ request()->get('name') }}" type="text" name="name" id="pic" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                     </div>
                     <div class="mb-4">
                         <label for="no_hp_pic" class="block text-sm font-medium text-gray-700">Satuan</label>
-                        <input type="text" name="satuan" id="no_hp_pic" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        <input value="{{ request()->get('satuan') }}" type="text" name="satuan" id="no_hp_pic" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                     </div>
                     <div class="mb-4">
                         <label for="no_hp_pic" class="block text-sm font-medium text-gray-700">Kategori</label>
-                        <input type="text" name="satuan" id="no_hp_pic" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        <input value="{{ request()->get('kategori') }}" type="text" name="satuan" id="no_hp_pic" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                     </div>
                     <div class="mb-4">
                         <label for="no_hp_pic" class="block text-sm font-medium text-gray-700">Tanggal Aktif</label>
-                        <input type="date" name="tgl_aktif" id="no_hp_pic" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        <input value="{{ request()->get('tgl_aktif') }}" type="date" name="tgl_aktif" id="no_hp_pic" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                     </div>
                     <div class="mb-4">
                         <label for="no_hp_pic" class="block text-sm font-medium text-gray-700">Paket data</label>
-                        <input type="text" name="paket data" id="no_hp_pic" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        {{-- <input value="{{ request()->get('paket_data') }}" type="text" name="paket data" id="no_hp_pic" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"> --}}
+                        <select class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" name="paket data" id="paket data">
+                            <option value="" disabled {{ request()->get('paket_data') ? '' : 'selected' }}>Pilih Paket Data</option>
+                            <option value="3" {{ request()->get('paket_data') == '3' ? 'selected' : '' }}>3 GB</option>
+                            <option value="5" {{ request()->get('paket_data') == '5' ? 'selected' : '' }}>5 GB</option>
+                            <option value="12" {{ request()->get('paket_data') == '12' ? 'selected' : '' }}>12 GB</option>
+                            <option value="25" {{ request()->get('paket_data') == '25' ? 'selected' : '' }}>25 GB</option>
+                            <option value="40" {{ request()->get('paket_data') == '40' ? 'selected' : '' }}>40 GB</option>
+                            <option value="85" {{ request()->get('paket_data') == '85' ? 'selected' : '' }}>85 GB</option>
+                        </select>
                     </div>
                     <div class="mb-4">
                         <label for="no_hp_pic" class="block text-sm font-medium text-gray-700">Status</label>
-                        <input type="text" name="status" id="no_hp_pic" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        <select class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" name="status" id="status">
+                            <option value="" disabled {{ request()->get('status') ? '' : 'selected' }}>Pilih Status</option>
+                            <option value="aktif" {{ request()->get('status') == 'aktif' ? 'selected' : '' }}>Aktif</option>
+                            <option value="non-aktif" {{ request()->get('status') == 'non-aktif' ? 'selected' : '' }}>Non-Aktif</option>
+                        </select>
+                        {{-- <input value="{{ request()->get('status') }}" type="text" name="status" id="no_hp_pic" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"> --}}
                     </div>
                     <div class="flex justify-end">
                         <div>
