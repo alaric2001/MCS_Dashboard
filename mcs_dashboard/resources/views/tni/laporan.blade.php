@@ -7,10 +7,14 @@
         <div class="my-[30px] flex justify-between">
             <p class=" font-[600] text-xl">Laporan Gangguan Layanan</p>
             <div class="flex gap-4">
-                <button id="open_importdata_btn" class="flex justify-between items-center  px-4 py-3 border border-[#A6A6A6] text-black bg-white h-[44px] w-[162px] rounded-xl hover:bg-gray-200">
+                <button id="openFilter" class="flex justify-between items-center  px-4 py-3 border border-[#A6A6A6] text-black bg-white h-[44px] w-[112px] rounded-xl hover:bg-gray-200">
+                    <i class="material-icons">filter_list</i>
+                    <p>Filter</p>
+                </button>
+                {{-- <button id="open_importdata_btn" class="flex justify-between items-center  px-4 py-3 border border-[#A6A6A6] text-black bg-white h-[44px] w-[162px] rounded-xl hover:bg-gray-200">
                     <i class="material-icons">file_upload</i>
                     <p>Import Data</p>
-                </button>
+                </button> --}}
                 <button id="openModalButton" class="flex justify-between items-center  px-4 py-3 border border-[#394C29] text-white bg-[#394C29] h-[44px] rounded-xl hover:bg-[#4c6637]">
                     + Buat Laporan
                 </button>
@@ -45,7 +49,7 @@
         </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal Input Laporan -->
     <div id="myModal" class="hidden">
         {{-- <div id="modalOverlay" class="modal-overlay fixed top-0 left-0 w-full h-full bg-black opacity-50"></div>
         <div id="modalOverlay" class="modal-container fixed top-0 left-0 z-50 w-full h-full flex items-center justify-center"> --}}
@@ -84,6 +88,49 @@
                     <div class="flex justify-end">
                         <div>
                             <a href="/gangguan" id="closeModalButton" class="bg-[#6C757D] text-white px-4 py-2 rounded-md hover:bg-[#52595e]">Batal</a>
+                            <button type="submit" class="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600">Simpan</button>
+                        </div>
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Filter -->
+    <div id="modal_filter" class="hidden ">
+        {{-- <div id="modalOverlay" class="modal-overlay fixed top-0 left-0 w-full h-full bg-black opacity-50"></div>
+        <div id="modalOverlay" class="modal-container fixed top-0 left-0 z-50 w-full h-full flex items-center justify-center"> --}}
+            <div class="modal-content w-[440px] bg-white p-8 rounded-lg shadow-md m-auto h-auto">
+                <div class="flex justify-between items-center">
+                    <h1 class="text-lg font-semibold mb-4">Filter Laporan</h1>
+                    <button id="close_filter" class="p-2">
+                        <h1 class="text-lg font-semibold mb-4">x</h1>
+                    </button>
+                </div>
+                
+                <form action="/gangguan" method="GET">
+                    @csrf
+                    <div class="mb-4">
+                        <label for="data_mcs_id" class="block text-sm font-medium text-gray-700">Nomor MCS</label>
+                        <input value="{{ request()->get('nomor_mcs') }}" type="number" name="nomor_mcs" id="nomor_mcs" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                    </div>
+                    <div class="mb-4">
+                        <label for="pic" class="block text-sm font-medium text-gray-700">PIC</label>
+                        <input value="{{ request()->get('pic') }}" type="text" name="pic" id="pic" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                    </div>
+                    <div class="mb-4">
+                        <label for="no_hp_pic" class="block text-sm font-medium text-gray-700">Nomor HP PIC</label>
+                        <input value="{{ request()->get('no_hp_pic') }}" type="number" name="no_hp_pic" id="no_hp_pic" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                    </div>
+                    <div class="mb-4">
+                        <label for="no_hp_pic" class="block text-sm font-medium text-gray-700">Keterangan</label>
+                        {{-- <input value="{{ request()->get('kategori') }}" type="text" name="satuan" id="no_hp_pic" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"> --}}
+                        <textarea value="{{ request()->get('ket') }}" name="ket" id="ket" rows="3" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
+                    </div>
+                    <div class="flex justify-end">
+                        <div>
+                            <a href="/gangguan" id="close_filter" class="bg-[#6C757D] text-white px-4 py-2 rounded-md hover:bg-[#52595e]">Batal</a>
                             <button type="submit" class="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600">Simpan</button>
                         </div>
                         
@@ -138,6 +185,16 @@
 
         // const modalOverlay = document.getElementById('modalOverlay');
         // const modal = document.getElementById('myModal');
+
+        //Modal Filter
+        document.getElementById('openFilter').addEventListener('click', function() {
+            document.getElementById('modal_filter').classList.remove('hidden');
+            document.getElementById('modal_filter').classList.add('modal', 'fixed', 'top-0', 'left-0', 'w-full', 'h-full', 'flex', 'items-center', 'justify-center');
+        });
+        document.getElementById('close_filter').addEventListener('click', function() {
+            document.getElementById('modal_filter').classList.add('hidden');
+        });
+
 
         document.getElementById('open_importdata_btn').addEventListener('click', function() {
             document.getElementById('modal_importdata').classList.remove('hidden');

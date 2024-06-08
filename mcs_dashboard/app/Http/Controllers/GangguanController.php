@@ -8,9 +8,28 @@ use App\Models\MCS;
 
 class GangguanController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $gangguan = Gangguan::all();
+        // $gangguan = Gangguan::all();
+        $query = Gangguan::query();
+
+        if ($request->filled('nomor_mcs')) {
+            $query->where('no_mcs','like', '%'.  $request->nomor_mcs . '%');
+        }
+
+        if ($request->filled('pic')) {
+            $query->where('pic', 'like', '%' . $request->pic . '%');
+        }
+
+        if ($request->filled('no_hp_pic')) {
+            $query->where('no_hp_pic', 'like', '%' . $request->no_hp_pic . '%');
+        }
+
+        if ($request->filled('ket')) {
+            $query->where('ket', 'like', '%' . $request->ket . '%');
+        }
+        $gangguan = $query->get();
+
         $datamcs = MCS::all();
         return view('tni.laporan', compact('gangguan', 'datamcs'));
         // return view('tni.gangguan');

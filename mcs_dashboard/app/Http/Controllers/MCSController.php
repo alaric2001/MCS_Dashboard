@@ -19,35 +19,35 @@ class MCSController extends Controller
         // $datamcs = MCS::all();
         $query = MCS::query();
 
-    if ($request->filled('nomor_mcs')) {
-        $query->where('no_mcs','like', '%'.  $request->nomor_mcs . '%');
-    }
+        if ($request->filled('nomor_mcs')) {
+            $query->where('no_mcs','like', '%'.  $request->nomor_mcs . '%');
+        }
 
-    if ($request->filled('name')) {
-        $query->where('nama', 'like', '%' . $request->name . '%');
-    }
+        if ($request->filled('name')) {
+            $query->where('nama', 'like', '%' . $request->name . '%');
+        }
 
-    if ($request->filled('satuan')) {
-        $query->where('satuan', 'like', '%' . $request->satuan . '%');
-    }
+        if ($request->filled('satuan')) {
+            $query->where('satuan', 'like', '%' . $request->satuan . '%');
+        }
 
-    if ($request->filled('kategori')) {
-        $query->where('kategori', 'like', '%' . $request->kategori . '%');
-    }
+        if ($request->filled('kategori')) {
+            $query->where('kategori', 'like', '%' . $request->kategori . '%');
+        }
 
-    if ($request->filled('tgl_aktif')) {
-        $query->whereDate('tgl_aktif', $request->tgl_aktif);
-    }
+        if ($request->filled('tgl_aktif')) {
+            $query->whereDate('tgl_aktif', $request->tgl_aktif);
+        }
 
-    if ($request->filled('paket_data')) {
-        $query->where('paket_data', 'like', '%' . $request->paket_data . '%');
-    }
+        if ($request->filled('paket_data')) {
+            $query->where('paket_data', 'like', '%' . $request->paket_data . '%');
+        }
 
-    if ($request->filled('status')) {
-        $query->where('status', $request->status);
-    }
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
 
-    $datamcs = $query->get();
+        $datamcs = $query->get();
         return view('tni.mcs_data', compact('datamcs'));
     }
 
