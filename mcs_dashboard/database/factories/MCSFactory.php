@@ -20,7 +20,7 @@ class MCSFactory extends Factory
         $no_mcs = '628' . $this->faker->unique()->numberBetween(1000000000, 9999999999);
         $nama = $this->faker->randomElement(['Kasad', 'Wakasad', 'Wangkostrad', 'Kapushubad', 'Aster Kasad', 'Cadangan Pusat']);
         $satuan = $this->faker->randomElement(['KOSTRAD', 'MABESAD dan BALAKPUS', 'MAPUSHUBAD', 'TAMBAHAN NOMOR PATI']);
-        $kategori = 'PATI';
+        $kategori = $this->faker->randomElement(['PATI', 'PAMEN', 'PAMA', 'BINTARA', 'TAMTAMA']);;
         $tgl_aktif = $this->faker->date();
         $paket_data = 'MCS ' . $this->faker->randomElement([3, 5, 12, 25, 40, 85]) . 'GB';
         // $paket_data = 'MCS ' . $this->faker->numberBetween(50, 100) . 'GB';

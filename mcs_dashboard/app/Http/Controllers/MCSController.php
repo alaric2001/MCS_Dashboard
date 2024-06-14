@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\MCS;
+use App\Models\Gangguan;
+use DB;
+
 
 class MCSController extends Controller
 {
@@ -11,7 +14,20 @@ class MCSController extends Controller
     {
         $datamcs = MCS::all();
         // return view('layouts.nav_user', ['cartCount' => $cartCount]);
-        return view('tni.home', compact('datamcs'));
+        // Mengelompokkan data berdasarkan kategori dan menghitung jumlahnya
+        $kategoriCounts = MCS::select('kategori', DB::raw('count(*) as total'))
+        ->groupBy('kategori')
+        ->pluck('total', 'kategori')
+        ->all();
+
+        // Mengambil data gangguan dan menghitung jumlahnya berdasarkan paket_data
+        $gangguanCounts = Gangguan::join('data_mcs', 'gangguan.data_mcs_id', '=', 'data_mcs.id')
+            ->select('data_mcs.paket_data', DB::raw('count(*) as total'))
+            ->groupBy('data_mcs.paket_data')
+            ->pluck('total', 'data_mcs.paket_data')
+            ->all();
+
+        return view('tni.home', compact('datamcs', 'kategoriCounts', 'gangguanCounts'));
     }
 
     public function index(Request $request)

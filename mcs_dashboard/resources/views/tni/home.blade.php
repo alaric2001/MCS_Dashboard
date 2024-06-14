@@ -16,13 +16,28 @@
                 </p>
                 <button id="openModalButton" class="bg-[#394C29] font-bold rounded-xl px-4 py-3 w-[192px] text-white ">Laporan Gangguan</button>
             </div>
-            <div class="w-[40%] flex items-end ">
+            {{-- <div class="w-[40%] flex items-end"> --}}
                 <img class="rounded-2xl" src="{{ asset('images/bg.png') }}" alt="bg">
-            </div>
-            
+            {{-- </div> --}}
             
         </div>
+
+        <div class="mt-4 flex flex-col">
+            <p class="text-lg font-bold text-primary">
+                Rekap Data MCS TNI AD
+            </p>
+
+            <div class="flex gap-2 justify-between">
+                <div>
+                    <canvas id="kategoriChart" width="500" height="500"></canvas>
+                </div>
+                <div>
+                    <canvas id="gangguanChart" width="500" height="500"></canvas>
+                </div>
+            </div>
+        </div>
     </div>
+    
     
     <!-- Modal -->
     <div id="myModal" class="hidden">
@@ -62,8 +77,8 @@
                     </div>
                     <div class="flex justify-end">
                         <div>
-                            <a href="/gangguan" id="closeModalButton" class="bg-[#6C757D] text-white px-4 py-2 rounded-md hover:bg-[#52595e]">Batal</a>
-                            <button type="submit" class="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600">Simpan</button>
+                            <a href="/" id="closeModalButton" class="bg-[#6C757D] text-white px-4 py-2 rounded-md hover:bg-[#52595e]">Batal</a>
+                            <button type="submit" class="bg-primary text-white px-4 py-2 rounded-md hover:bg-[#6d805d]">Simpan</button>
                         </div>
                         
                     </div>
@@ -91,5 +106,95 @@
                 document.getElementById('myModal').classList.add('hidden');
             }
         }
+    </script>
+
+    {{-- CHART --}}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var ctx = document.getElementById('kategoriChart').getContext('2d');
+            var data = {
+                labels: {!! json_encode(array_keys($kategoriCounts)) !!},
+                datasets: [{
+                    data: {!! json_encode(array_values($kategoriCounts)) !!},
+                    backgroundColor: [
+                        '#6D7F62',
+                        '#86997B',
+                        '#92AB95',
+                        '#828668',
+                        '#9C917F',
+                    ],
+                    borderColor: [
+                        '#6D7F62',
+                        '#86997B',
+                        '#92AB95',
+                        '#828668',
+                        '#9C917F',
+                    ],
+                    borderWidth: 1
+                }]
+            };
+            
+            var options = {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Pengguna Layanan'
+                    }
+                }
+            };
+            
+            var myPieChart = new Chart(ctx, {
+                type: 'pie',
+                data: data,
+                options: options
+            });
+
+
+            // Chart for Gangguan
+            var ctxGangguan = document.getElementById('gangguanChart').getContext('2d');
+            var dataGangguan = {
+                labels: {!! json_encode(array_keys($gangguanCounts)) !!},
+                datasets: [{
+                    data: {!! json_encode(array_values($gangguanCounts)) !!},
+                    backgroundColor: [
+                        '#8B9D81',
+                        '#A5B39D',
+                        '#829E86',
+                        '#ACAF98',
+                        '#93A8AB',
+                        '#9C8CA6',
+                        '#B3A09D'
+                    ],
+                    borderColor: [
+                        '#8B9D81',
+                        '#A5B39D',
+                        '#829E86',
+                        '#ACAF98',
+                        '#93A8AB',
+                        '#9C8CA6',
+                        '#B3A09D'
+                    ],
+                    borderWidth: 1
+                }]
+            };
+            
+            var optionsGangguan = {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Laporan Gangguan'
+                    }
+                }
+            };
+            
+            var gangguanChart = new Chart(ctxGangguan, {
+                type: 'pie',
+                data: dataGangguan,
+                options: optionsGangguan
+            });
+        });
     </script>
 @endsection

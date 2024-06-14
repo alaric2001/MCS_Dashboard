@@ -15,6 +15,12 @@ export default {
                 // sans: ['Figtree', ...defaultTheme.fontFamily.sans],
                 'sans': ['Poppins', 'sans-serif'],
             },
+            colors: {
+                primary: '#394C29', // Ganti dengan warna primary Anda
+                secondary: '#8A7F56',
+                // primary_hover: '#ddc79e',
+                // secondary_hover:'#25211a',
+            },
         },
     },
 

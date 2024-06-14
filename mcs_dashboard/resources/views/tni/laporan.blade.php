@@ -88,7 +88,7 @@
                     <div class="flex justify-end">
                         <div>
                             <a href="/gangguan" id="closeModalButton" class="bg-[#6C757D] text-white px-4 py-2 rounded-md hover:bg-[#52595e]">Batal</a>
-                            <button type="submit" class="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600">Simpan</button>
+                            <button type="submit" class="bg-primary text-white px-4 py-2 rounded-md hover:bg-[#6d805d]">Simpan</button>
                         </div>
                         
                     </div>
