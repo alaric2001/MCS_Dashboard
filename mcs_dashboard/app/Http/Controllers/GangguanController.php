@@ -53,4 +53,11 @@ class GangguanController extends Controller
 
         return redirect()->back()->with('success', 'Data berhasil ditambahkan');
     }
+
+    public function destroy($id)
+    {
+        $rasa_kopi = Gangguan::find($id);
+        $rasa_kopi->delete();
+        return redirect()->back();
+    }
 }

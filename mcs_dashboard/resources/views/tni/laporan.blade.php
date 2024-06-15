@@ -41,7 +41,11 @@
                         <td>{{ $item->pic }}</td>
                         <td>{{ $item->no_hp_pic }}</td>
                         <td>{{ $item->ket }}</td>
-                        <td>-</td>
+                        <td>
+                            <a class="font-semibold text-[12px] rounded-md text-white bg-red-500 p-2" href="/delete_laporan/{{ $item->id }}" onclick="return confirm('Anda yakin akan menghapus Laporan?')">
+                                Hapus
+                            </a>
+                        </td>
                     </tr>
                     @endforeach 
                 </tbody>

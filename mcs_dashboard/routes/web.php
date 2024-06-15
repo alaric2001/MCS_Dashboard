@@ -34,6 +34,7 @@ Route::middleware(['auth','user'])->group(function () {
     Route::get('/mcs-data', [MCSController::class, 'index']);
     Route::get('/gangguan', [GangguanController::class, 'index']);
     Route::post('/inputlaporan', [GangguanController::class, 'add']);
+    Route::get('/delete_laporan/{id}', [GangguanController::class, 'destroy']);
     
 });
 
